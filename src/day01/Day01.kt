@@ -1,11 +1,15 @@
+package day01
+
+import readInput
+
 fun main() {
     fun part1(input: List<String>): Int {
         var mostCalories = Int.MIN_VALUE
         var currentCalories = 0
 
-        for(calories in input) {
-            if(calories == "") {
-                if(currentCalories > mostCalories) {
+        for (calories in input) {
+            if (calories == "") {
+                if (currentCalories > mostCalories) {
                     mostCalories = currentCalories
                 }
                 currentCalories = 0
@@ -14,7 +18,7 @@ fun main() {
             }
         }
 
-        if(currentCalories > mostCalories) {
+        if (currentCalories > mostCalories) {
             mostCalories = currentCalories
         }
 
@@ -25,8 +29,8 @@ fun main() {
         val listOfCalories = mutableListOf<Int>()
         var currentCalories = 0
 
-        for(calories in input) {
-            if(calories == "") {
+        for (calories in input) {
+            if (calories == "") {
                 listOfCalories.add(currentCalories)
                 currentCalories = 0
             } else {
@@ -42,11 +46,9 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 24000)
-    check(part2(testInput) == 45000)
+    check(part1(readInput("Day01_test")) == 24000)
+    println(part1(readInput("Day01")))
 
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    check(part2(readInput("Day01_test")) == 45000)
+    println(part2(readInput("Day01")))
 }
